@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Ex3 {
 
-    public final static int DEFAULT_PORT = 9;
+    public final static int DEFAULT_PORT = 2002;
 
     public static void main(String[] args) {
 
