@@ -1,8 +1,10 @@
 
 package UDPSocket;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 
 public abstract class Ex6 extends Thread {
 

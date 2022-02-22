@@ -1,7 +1,8 @@
 
 package UDPSocket;
 
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.SocketException;
 
 public class Ex7 extends Ex6 {
 
@@ -22,8 +23,8 @@ public class Ex7 extends Ex6 {
         try {
             Ex6 server = new Ex7();
             server.start();
-        } catch (SocketException ex) {
-            ex.printStackTrace();
+        } catch (SocketException e) {
+            e.printStackTrace();
         }
     }
 }

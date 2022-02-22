@@ -1,8 +1,12 @@
-
 package UDPSocket;
 
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
 
 public class Ex11 extends Thread {
 
@@ -40,8 +44,8 @@ public class Ex11 extends Thread {
                 socket.send(output);
                 Thread.yield();
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

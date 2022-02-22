@@ -1,8 +1,9 @@
-
 package UDPSocket;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 
 class Ex12 extends Thread {
     DatagramSocket socket;
@@ -26,8 +27,8 @@ class Ex12 extends Thread {
                 String s = new String(dp.getData(), 0, dp.getLength());
                 System.out.println(s);
                 Thread.yield();
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

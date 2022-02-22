@@ -11,7 +11,7 @@ public class Ex2 {
                 // there is already a server running on port i
                 DatagramSocket server = new DatagramSocket(port);
                 server.close();
-            } catch (SocketException ex) {
+            } catch (SocketException e) {
                 System.out.println("There is a server on port " + port + ".");
             }
         }

@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UDPSocket;
 
-import java.net.*;
-import java.io.*;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
 
 public class Ex4 {
 
@@ -21,8 +18,8 @@ public class Ex4 {
         if (args.length > 0) {
             try {
                 port = Integer.parseInt(args[0]);
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
@@ -37,12 +34,12 @@ public class Ex4 {
                             + packet.getPort() + " says " + s);
                     // reset the length for the next packet
                     packet.setLength(buffer.length);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
-        } catch (SocketException ex) {
-            ex.printStackTrace();
+        } catch (SocketException e) {
+            e.printStackTrace();
         }
 
     }

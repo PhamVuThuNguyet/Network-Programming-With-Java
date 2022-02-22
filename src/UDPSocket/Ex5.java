@@ -1,10 +1,10 @@
-
 package UDPSocket;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Date;
 
 
 public class Ex5 extends Ex6 {
@@ -30,8 +30,8 @@ public class Ex5 extends Ex6 {
         try {
             Ex6 server = new Ex5();
             server.start();
-        } catch (SocketException ex) {
-            ex.printStackTrace();
+        } catch (SocketException e) {
+            e.printStackTrace();
         }
 
     }

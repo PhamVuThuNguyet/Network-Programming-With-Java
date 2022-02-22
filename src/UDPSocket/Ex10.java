@@ -1,7 +1,9 @@
 
 package UDPSocket;
 
-import java.net.*;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class Ex10 {
 
@@ -22,8 +24,8 @@ public class Ex10 {
             sender.start();
             Thread receiver = new Ex12(sender.getSocket());
             receiver.start();
-        } catch (UnknownHostException | SocketException ex) {
-            ex.printStackTrace();
+        } catch (UnknownHostException | SocketException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -10,8 +10,7 @@ public class Ex1 {
         try {
             InetAddress ia = InetAddress.getByName("www.google.com");
             int port = 7;
-            DatagramPacket dp
-                    = new DatagramPacket(data, data.length, ia, port);
+            DatagramPacket dp = new DatagramPacket(data, data.length, ia, port);
             System.out.println("This packet is addressed to "
                     + dp.getAddress() + " on port " + dp.getPort());
             System.out.println("There are " + dp.getLength()
