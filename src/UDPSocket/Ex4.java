@@ -10,7 +10,7 @@ import java.io.*;
 
 public class Ex4 {
 
-    public final static int DEFAULT_PORT = 9;
+    public final static int DEFAULT_PORT = 2002;
     public final static int MAX_PACKET_SIZE = 65507;
 
     public static void main(String[] args) {
@@ -24,8 +24,6 @@ public class Ex4 {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        } else {
-            port = 2002;
         }
 
         try {
