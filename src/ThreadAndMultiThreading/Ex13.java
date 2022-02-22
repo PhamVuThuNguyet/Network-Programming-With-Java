@@ -3,8 +3,6 @@ package ThreadAndMultiThreading;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
@@ -37,8 +35,8 @@ class SecondCounter extends JComponent implements Runnable {
         while (keepRunning) {
             try {
                 Thread.sleep(nextSleepTime);
-            } catch (InterruptedException x) {
-                x.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
             counter++;

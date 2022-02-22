@@ -14,8 +14,8 @@ public class Ex6 {
             }
             out.flush();
             out.close();
-        } catch (IOException x) {
-            x.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -27,14 +27,14 @@ public class Ex6 {
                 try {
                     int i = in.readInt();
                     System.out.println("Vua doc xong: " + i);
-                } catch (EOFException eofe) {
+                } catch (EOFException e) {
                     eof = true;
-                    eofe.printStackTrace();
+                    e.printStackTrace();
                 }
             }
             System.out.println("Doc tat ca du lieu tu Pipe");
-        } catch (IOException x) {
-            x.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

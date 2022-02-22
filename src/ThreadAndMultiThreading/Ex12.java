@@ -16,7 +16,7 @@ public class Ex12 extends JLabel {
         setBorder(BorderFactory.createLineBorder(Color.black));
         setHorizontalAlignment(SwingConstants.RIGHT);
         setFont(new Font("SansSerif", Font.BOLD, 16));
-        setText("00000.0"); // use to size component
+        setText("00000.0");
         setMinimumSize(getPreferredSize());
         setPreferredSize(getPreferredSize());
         setSize(getPreferredSize());
@@ -28,8 +28,8 @@ public class Ex12 extends JLabel {
         Runnable r = () -> {
             try {
                 runWork();
-            } catch (Exception x) {
-                x.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         };
 
@@ -62,10 +62,11 @@ public class Ex12 extends JLabel {
 
                 timeText = fmt.format(elapsedTime / 1000.0);
                 SwingUtilities.invokeAndWait(updateText);
-            } catch (InterruptedException ix) {
+            } catch (InterruptedException e) {
+                e.printStackTrace();
                 return;
-            } catch (InvocationTargetException x) {
-                x.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
             }
         }
     }

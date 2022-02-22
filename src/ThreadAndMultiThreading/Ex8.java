@@ -7,6 +7,7 @@ class Parentheses {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             System.out.println("Interrupted");
+            e.printStackTrace();
         }
         System.out.println(")");
     }
@@ -19,6 +20,7 @@ class ParenthesesWithSync {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             System.out.println("Interrupted");
+            e.printStackTrace();
         }
         System.out.println(")");
     }
@@ -62,6 +64,7 @@ public class Ex8 implements Runnable {
             name2.t.join();
         } catch (InterruptedException e) {
             System.out.println("Interrupted");
+            e.printStackTrace();
         }
 
         ParenthesesWithSync p4 = new ParenthesesWithSync();
@@ -72,6 +75,7 @@ public class Ex8 implements Runnable {
             name4.t.join();
         } catch (InterruptedException e) {
             System.out.println("Interrupted");
+            e.printStackTrace();
         }
     }
 
