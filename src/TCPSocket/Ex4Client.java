@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Ex7Client {
+public class Ex4Client {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket("localhost", 7000);
         DataInputStream din = new DataInputStream(socket.getInputStream());
