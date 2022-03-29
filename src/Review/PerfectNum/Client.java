@@ -1,4 +1,4 @@
-package Review.Login;
+package Review.PerfectNum;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -25,7 +25,7 @@ public class Client {
         DataInputStream dataInputStream = new DataInputStream(client.getInputStream());
         DataOutputStream dataOutputStream = new DataOutputStream(client.getOutputStream());
 
-        int count_ = 0;
+        int count_ = count;
         do {
             //enter data
             ArrayList<String> temp = enterData();
@@ -56,6 +56,6 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
         Client client = new Client(InetAddress.getByName("localhost"), 2022);
-        client.execute();
+        client.execute(0);
     }
 }
