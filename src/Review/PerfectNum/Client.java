@@ -5,7 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
@@ -25,37 +24,25 @@ public class Client {
         DataInputStream dataInputStream = new DataInputStream(client.getInputStream());
         DataOutputStream dataOutputStream = new DataOutputStream(client.getOutputStream());
 
-        int count_ = count;
-        do {
-            //enter data
-            ArrayList<String> temp = enterData();
-            String userName = temp.get(0);
-            String password = temp.get(1);
-            count_++;
-
-            dataOutputStream.writeUTF(userName);
-            dataOutputStream.writeUTF(password);
-            dataOutputStream.writeInt(count_);
-
-            System.out.println(dataInputStream.readUTF());
-        } while (count_ < 3);
+        // Enter data
+        String s = enterData();
+        dataOutputStream.writeUTF(s);
+        System.out.println(s);
     }
 
-    private ArrayList<String> enterData() {
-        String userName, password;
-
-        userName = scanner.nextLine();
-        password = scanner.nextLine();
-
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add(userName);
-        strings.add(password);
-
-        return strings;
+    private String enterData() {
+        String s = "";
+        while (true) {
+            String temp = scanner.nextLine();
+            if (temp.equals("stop"))
+                break;
+            s += temp;
+        }
+        return s;
     }
 
     public static void main(String[] args) throws IOException {
         Client client = new Client(InetAddress.getByName("localhost"), 2022);
-        client.execute(0);
+        client.execute();
     }
 }
