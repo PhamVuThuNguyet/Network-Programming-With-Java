@@ -1,4 +1,4 @@
-package Review.PerfectNum;
+package Review.QuadraticEquation;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

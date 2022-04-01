@@ -1,11 +1,13 @@
-package Review.PerfectNum;
+package Review.QuadraticEquation;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 
 public class Server {
     private final int port;
@@ -26,41 +28,28 @@ public class Server {
         String s = dataInputStream.readUTF();
         System.out.println(s);
         String[] arr = getData(s);
-        ArrayList<Integer> integers = checkData(arr);
-
-        dataOutputStream.writeUTF(integers.toString());
+        String res = calculateRoots(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]));
+        dataOutputStream.writeUTF(res);
     }
 
     private String[] getData(String s) {
         return s.trim().split(";");
     }
 
-    private ArrayList<Integer> checkData(String[] s) {
-        ArrayList<Integer> ints = new ArrayList<>();
-        for (int i = 0; i < s.length; i++) {
-            if (isPerfect(Integer.parseInt(s[i]))) {
-                ints.add(i);
-            }
+    private String calculateRoots(int a, int b, int c) {
+        if (a == 0) {
+            System.out.println("The value of a cannot be 0.");
+            return "FAIL";
         }
-        return ints;
-    }
-
-    private boolean isPerfect(int n) {
-        if (n == 1)
-            return false;
-
-        int sum = 1;
-
-        for (int i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                if (i * i == n)
-                    sum += i;
-                else
-                    sum += i + (n / i);
-            }
+        int d = b * b - 4 * a * c;
+        double sqrtVal = sqrt(abs(d));
+        if (d > 0) {
+            return (-b + sqrtVal) / (2 * a) + "\n" + (-b - sqrtVal) / (2 * a);
+        } else if (d == 0) {
+            return (-(double) b / (2 * a) + "\n" + -(double) b / (2 * a));
+        } else {
+            return (-(double) b / (2 * a) + " + i" + sqrtVal + "\n" + -(double) b / (2 * a) + " - i" + sqrtVal);
         }
-
-        return sum == n;
     }
 
     public static void main(String[] args) throws IOException {

@@ -1,8 +1,11 @@
-package Review.Login;
+package Review.QuadraticEquationUDP;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
 
 public class Server {
     private final int port;
@@ -27,30 +30,14 @@ public class Server {
                 String message = new String(incoming.getData(), 0, incoming.getLength());
                 System.out.println("Received: " + message);
 
-                String userName = message.split(";")[0];
-                String password = message.split(";")[1];
+                String[] arr = getData(message);
+                String res = calculateRoots(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]));
 
-                int count = Integer.parseInt(message.split(";")[2]);
-
-                do {
-                    //Check data
-                    if (checkData(userName, password)) {
-                        message = "Login Successfully";
-                    } else {
-                        if (count < 3) {
-                            message = "Username or Password incorrect";
-                        } else {
-                            message = "Incorrect 3 times";
-                            ds.close();
-                        }
-                    }
-                } while (ds.isConnected());
-
-                DatagramPacket out = new DatagramPacket(message.getBytes(), incoming.getLength(),
+                DatagramPacket out = new DatagramPacket(res.getBytes(), incoming.getLength(),
                         incoming.getAddress(), incoming.getPort());
                 ds.send(out);
 
-                System.out.println(message);
+                System.out.println(res);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,8 +49,24 @@ public class Server {
         System.out.println("DISCONNECTED CLIENT");
     }
 
-    private boolean checkData(String userName, String password) {
-        return userName.equals("CS420") && password.equals("123");
+    private String[] getData(String s) {
+        return s.trim().split(";");
+    }
+
+    private String calculateRoots(int a, int b, int c) {
+        if (a == 0) {
+            System.out.println("The value of a cannot be 0.");
+            return "FAIL";
+        }
+        int d = b * b - 4 * a * c;
+        double sqrtVal = sqrt(abs(d));
+        if (d > 0) {
+            return (-b + sqrtVal) / (2 * a) + "\n" + (-b - sqrtVal) / (2 * a);
+        } else if (d == 0) {
+            return (-(double) b / (2 * a) + "\n" + -(double) b / (2 * a));
+        } else {
+            return (-(double) b / (2 * a) + " + i" + sqrtVal + "\n" + -(double) b / (2 * a) + " - i" + sqrtVal);
+        }
     }
 
     public static void main(String[] args) throws IOException {
